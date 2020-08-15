@@ -1,18 +1,9 @@
-/**
- * @file ScrollTracker.js
- * @description Shows the scroll depth percentage as a bar on
- * top of the screen.
- * @author Duncan Grubbs <duncan.grubbs@gmail.com>
- * @version 1.0.0
- */
+class ScrollTracker extends HTMLElement {
+  constructor() {
+    super();
 
-import React, { Component } from 'react';
-import propTypes from 'prop-types';
+    this.width = '0px';
 
-class ScrollTracker extends Component {
-  componentDidMount() {
-    const self = document.getElementById('scroll-tracker');
-    
     document.addEventListener('scroll', (evt) => {
       const limit = Math.max(
         document.body.scrollHeight,
@@ -27,27 +18,20 @@ class ScrollTracker extends Component {
       const percent = evt.target.scrollingElement.scrollTop / (limit * diffPercent);
       const pixCalc = (document.documentElement.clientWidth) * percent;
 
-      self.style.width = `${pixCalc}px`;
+      this.width = `${pixCalc}px`;
+      this.style.width = this.width;
     });
   }
 
-  render() {
-    const styles = {
-      'position': 'fixed',
-      'z-index': '10',
-      'top': '0',
-      'height': '3px',
-      'background': 'blue'
-    };
-
-    return (
-      <div style={styles} />
-    );
+  connectedCallback() {
+    this.style.position = 'fixed';
+    this.style.zIndex = '1000';
+    this.style.top = '0';
+    this.style.height = '0';
+    this.style.background = this.hasAttribute('color') ? this.getAttribute('color') : '#45b4f5';
+    this.style.width = this.width;
+    this.style.height = '3px';
   }
 }
 
-ScrollTracker.propTypes = {
-  color: propTypes.string
-};
-
-export default ScrollTracker;
+customElements.define('scroll-tracker', ScrollTracker);
