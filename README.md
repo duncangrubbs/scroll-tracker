@@ -1,2 +1,5 @@
-# scroll-tracker
-A React scroll tracker component.
+# Scroll Tracker
+> A React.js scroll tracker component
+
+# Dependencies
+- React.js
