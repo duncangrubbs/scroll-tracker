@@ -29,8 +29,8 @@ class ScrollTracker extends HTMLElement {
     this.style.top = '0';
     this.style.height = '0';
     this.style.background = this.hasAttribute('color') ? this.getAttribute('color') : '#45b4f5';
+    this.style.height = this.hasAttribute('height') ? this.getAttribute('height') : '3px';
     this.style.width = this.width;
-    this.style.height = '3px';
   }
 }
 
