@@ -28,5 +28,3 @@ Just fill these in like regular CSS properties.
 
 # Tools
 - [Web Components API](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
-
-# License
