@@ -24,13 +24,16 @@ class ScrollTracker extends HTMLElement {
   }
 
   connectedCallback() {
+    // Standard styles
     this.style.position = 'fixed';
     this.style.zIndex = '1000';
     this.style.top = '0';
     this.style.height = '0';
+    this.style.width = this.width;
+
+    // Styles from attributes
     this.style.background = this.hasAttribute('color') ? this.getAttribute('color') : '#45b4f5';
     this.style.height = this.hasAttribute('height') ? this.getAttribute('height') : '3px';
-    this.style.width = this.width;
   }
 }
 
